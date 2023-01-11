@@ -14,7 +14,7 @@ const EditCard = () => {
     e.preventDefault();
     await axios
       .patch(
-        `hhttps://card-app-backend.adaptable.app/api/card/update/${cardId}`,
+        `https://card-app-backend.adaptable.app/api/card/update/${cardId}`,
         {
           cardName,
           cardVideo,

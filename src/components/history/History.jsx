@@ -10,7 +10,6 @@ const History = () => {
       await axios
         .get(`https://card-app-backend.adaptable.app/api/history`)
         .then((res) => {
-          console.log(res.data.result);
           setHistory((prev) => res.data.result);
         });
     };
