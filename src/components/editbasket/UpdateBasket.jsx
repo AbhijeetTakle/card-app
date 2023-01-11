@@ -10,7 +10,7 @@ const UpdateBasket = () => {
   const updateBasketData = async (e) => {
     e.preventDefault();
     await axios
-      .patch(`http://localhost:5000/api/basket/${basketId}`, {
+      .patch(`https://card-app-backend.adaptable.app/api/basket/${basketId}`, {
         basketName,
       })
       .then((res) => {
@@ -33,7 +33,7 @@ const UpdateBasket = () => {
   useEffect(() => {
     const getBasket = async () => {
       await axios
-        .get(`http://localhost:5000/api/basket/${basketId}`)
+        .get(`https://card-app-backend.adaptable.app/api/basket/${basketId}`)
         .then((res) => {
           setBasketName((previous) => res.data.result);
           document.querySelector(".basket-name-update").value =

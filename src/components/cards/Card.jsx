@@ -6,7 +6,7 @@ const Card = (props) => {
   const navigate = useNavigate();
   const deleteCard = async (e) => {
     await axios.delete(
-      `http://localhost:5000/api/card/update/${props.card._id}`
+      `https://card-app-backend.adaptable.app/api/card/update/${props.card._id}`
     );
     window.location.reload();
   };

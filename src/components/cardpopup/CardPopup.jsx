@@ -8,17 +8,20 @@ const CardPopup = () => {
   useEffect(() => {
     const setCardData = async () => {
       await axios
-        .get(`http://localhost:5000/api/card/cardId/${card}`)
+        .get(`https://card-app-backend.adaptable.app/api/card/cardId/${card}`)
         .then((res) => {
           setCard((prev) => {
             const updateHistory = async () => {
               const d = new Date();
               const time = d.getTime();
-              await axios.post("http://localhost:5000/api/history", {
-                name: res.data.cardName,
-                link: `/card/${res.data.cardVideo}`,
-                time,
-              });
+              await axios.post(
+                "https://card-app-backend.adaptable.app/api/history",
+                {
+                  name: res.data.cardName,
+                  link: `/card/${res.data.cardVideo}`,
+                  time,
+                }
+              );
             };
             updateHistory();
             return res.data.card;

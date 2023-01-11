@@ -8,9 +8,11 @@ const BasketTab = () => {
   const [baskets, setBaskets] = useState(null);
   useEffect(() => {
     const getBaskets = async () => {
-      await axios.get("http://localhost:5000/api/basket").then((res) => {
-        setBaskets((previous) => res.data.result);
-      });
+      await axios
+        .get("https://card-app-backend.adaptable.app/api/basket")
+        .then((res) => {
+          setBaskets((previous) => res.data.result);
+        });
     };
     getBaskets();
   }, []);

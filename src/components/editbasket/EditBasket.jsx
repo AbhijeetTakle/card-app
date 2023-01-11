@@ -11,7 +11,7 @@ const EditBasket = () => {
   const submitBasketData = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:5000/api/basket", {
+      .post("https://card-app-backend.adaptable.app/api/basket", {
         name: basketName,
       })
       .then((res) => {
@@ -33,9 +33,11 @@ const EditBasket = () => {
   };
   useEffect(() => {
     const getBaskets = async () => {
-      await axios.get("http://localhost:5000/api/basket").then((res) => {
-        setBaskets((previous) => res.data.result);
-      });
+      await axios
+        .get("https://card-app-backend.adaptable.app/api/basket")
+        .then((res) => {
+          setBaskets((previous) => res.data.result);
+        });
     };
     getBaskets();
   }, []);

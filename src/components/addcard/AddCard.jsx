@@ -12,7 +12,7 @@ const AddCard = () => {
   const submitCardData = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:5000/api/card/create", {
+      .post("https://card-app-backend.adaptable.app/api/card/create", {
         cardName,
         cardVideo,
         cardBasket,
@@ -33,9 +33,11 @@ const AddCard = () => {
   };
   useEffect(() => {
     const getBaskets = async () => {
-      await axios.get("http://localhost:5000/api/basket").then((res) => {
-        setBaskets((previous) => res.data.result);
-      });
+      await axios
+        .get("https://card-app-backend.adaptable.app/api/basket")
+        .then((res) => {
+          setBaskets((previous) => res.data.result);
+        });
     };
     getBaskets();
   }, []);

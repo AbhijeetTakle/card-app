@@ -7,10 +7,12 @@ const History = () => {
   const [history, setHistory] = useState(null);
   useEffect(() => {
     const getHistory = async () => {
-      await axios.get(`http://localhost:5000/api/history`).then((res) => {
-        console.log(res.data.result);
-        setHistory((prev) => res.data.result);
-      });
+      await axios
+        .get(`https://card-app-backend.adaptable.app/api/history`)
+        .then((res) => {
+          console.log(res.data.result);
+          setHistory((prev) => res.data.result);
+        });
     };
     getHistory();
   }, []);

@@ -18,7 +18,9 @@ const BasketListItem = (props) => {
       <Link
         onClick={async (e) => {
           await axios
-            .delete(`http://localhost:5000/api/basket/${props.basket._id}`)
+            .delete(
+              `https://card-app-backend.adaptable.app/api/basket/${props.basket._id}`
+            )
             .then((res) => window.location.reload());
         }}
       >

@@ -9,7 +9,9 @@ const CardsBar = () => {
   useEffect(() => {
     const loadCards = async () => {
       await axios
-        .get(`http://localhost:5000/api/card/basket/${basketName}`)
+        .get(
+          `https://card-app-backend.adaptable.app/api/card/basket/${basketName}`
+        )
         .then((res) => {
           setCards((prev) => res.data.cards);
         })

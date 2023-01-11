@@ -13,11 +13,14 @@ const EditCard = () => {
   const submitCardData = async (e) => {
     e.preventDefault();
     await axios
-      .patch(`http://localhost:5000/api/card/update/${cardId}`, {
-        cardName,
-        cardVideo,
-        cardBasket,
-      })
+      .patch(
+        `hhttps://card-app-backend.adaptable.app/api/card/update/${cardId}`,
+        {
+          cardName,
+          cardVideo,
+          cardBasket,
+        }
+      )
       .then((res) => {
         document.querySelector(".submit-btn").value = res.data.message;
         document.querySelector(".submit-btn").style.backgroundColor = "green";
@@ -36,7 +39,7 @@ const EditCard = () => {
   useEffect(() => {
     const setCardData = async () => {
       await axios
-        .get(`http://localhost:5000/api/card/cardId/${cardId}`)
+        .get(`https://card-app-backend.adaptable.app/api/card/cardId/${cardId}`)
         .then((res) => {
           document.querySelector(".card-name").value = res.data.card.cardName;
           document.querySelector(".card-link").value = res.data.card.cardVideo;
@@ -58,9 +61,11 @@ const EditCard = () => {
     };
     setCardData();
     const getBaskets = async () => {
-      await axios.get("http://localhost:5000/api/basket").then((res) => {
-        setBaskets((previous) => res.data.result);
-      });
+      await axios
+        .get("https://card-app-backend.adaptable.app/api/basket")
+        .then((res) => {
+          setBaskets((previous) => res.data.result);
+        });
     };
     getBaskets();
   }, [cardId]);
