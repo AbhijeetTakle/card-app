@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
+import BasketTab from "./components/baskettab/BasketTab";
+import CardsBar from "./components/cards/CardsBar";
+import CardPopup from "./components/cardpopup/CardPopup";
+import AddCard from "./components/addcard/AddCard";
+import EditCard from "./components/editcard/EditCard";
+import EditBasket from "./components/editbasket/EditBasket";
+import UpdateBasket from "./components/editbasket/UpdateBasket";
+import History from "./components/history/History";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Routes>
+          <Route
+            path={`/`}
+            element={
+              <div>
+                <BasketTab />
+                <Outlet />
+              </div>
+            }
+          >
+            <Route path="/basket/:basketName" element={<CardsBar />} />
+          </Route>
+          <Route path={`/card/:card`} element={<CardPopup />} />
+          <Route path="/addcard" element={<AddCard />} />
+          <Route path="/editcard/:cardId" element={<EditCard />} />
+          <Route path="/editbaskets" element={<EditBasket />} />
+          <Route path="/updateBasket/:basketId" element={<UpdateBasket />} />
+          <Route path="/history" element={<History />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

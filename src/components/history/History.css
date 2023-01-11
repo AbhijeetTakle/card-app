@@ -1,0 +1,25 @@
+.history-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.history-item-tab {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.history-item-tab > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
