@@ -21,6 +21,8 @@
   text-align: center;
   font-size: 20px;
   text-transform: capitalize;
+  cursor: pointer;
+  color: blue;
 }
 
 .links-container {
@@ -28,4 +30,8 @@
   display: flex;
   flex-direction: row;
   gap: 20px;
+}
+
+.links-container > a {
+  color: black;
 }

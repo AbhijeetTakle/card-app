@@ -11,10 +11,7 @@ const Card = (props) => {
     window.location.reload();
   };
   return (
-    <div
-      className="card-container"
-      onClick={(e) => navigate(`/card/${props.card._id}`)}
-    >
+    <div className="card-container">
       <div className="video-container">
         <iframe
           src={props.card.cardVideo}
@@ -24,7 +21,12 @@ const Card = (props) => {
           allowFullScreen
         ></iframe>
       </div>
-      <div className="title-container">{props.card.cardName}</div>
+      <div
+        className="title-container"
+        onClick={(e) => navigate(`/card/${props.card._id}`)}
+      >
+        {props.card.cardName}
+      </div>
       <div className="links-container">
         <Link to={`/editcard/${props.card._id}`}>Edit</Link>
         <Link onClick={deleteCard}>Delete</Link>
