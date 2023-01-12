@@ -10,20 +10,23 @@ const CardPopup = () => {
       await axios
         .get(`https://card-app-backend.adaptable.app/api/card/cardId/${card}`)
         .then((res) => {
+          const updateHistory = async () => {
+            console.log("history request");
+            const d = new Date();
+            const time = d.getTime();
+            await axios
+              .post("https://card-app-backend.adaptable.app/api/history", {
+                name: res.data.card.cardName,
+                link: `/card/${res.data.card.cardVideo}`,
+                time: time,
+              })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => console.log(err));
+          };
+          updateHistory();
           setCard((prev) => {
-            const updateHistory = async () => {
-              const d = new Date();
-              const time = d.getTime();
-              await axios
-                .post("https://card-app-backend.adaptable.app/api/history", {
-                  name: res.data.cardName,
-                  link: `/card/${res.data.cardVideo}`,
-                  time,
-                })
-                .then((res) => {})
-                .catch((err) => console.log(err));
-            };
-            updateHistory();
             return res.data.card;
           });
         })
