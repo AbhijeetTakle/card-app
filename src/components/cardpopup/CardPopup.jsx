@@ -14,14 +14,14 @@ const CardPopup = () => {
             const updateHistory = async () => {
               const d = new Date();
               const time = d.getTime();
-              await axios.post(
-                "https://card-app-backend.adaptable.app/api/history",
-                {
+              await axios
+                .post("https://card-app-backend.adaptable.app/api/history", {
                   name: res.data.cardName,
                   link: `/card/${res.data.cardVideo}`,
                   time,
-                }
-              );
+                })
+                .then((res) => {})
+                .catch((err) => console.log(err));
             };
             updateHistory();
             return res.data.card;
